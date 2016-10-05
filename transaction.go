@@ -33,6 +33,8 @@ type Transaction struct {
 	ProcessorResponseText      string               `xml:"processor-response-text,omitempty"`
 	ProcessorAuthorizationCode string               `xml:"processor-authorization-code,omitempty"`
 	SettlementBatchId          string               `xml:"settlement-batch-id,omitempty"`
+	TaxAmount                  *Decimal             `xml:"tax-amount,omitempty"`
+	TaxExempt                  bool                 `xml:"tax-exempt,omitempty"`
 }
 
 // TODO: not all transaction fields are implemented yet, here are the missing fields (add on demand)
@@ -48,8 +50,6 @@ type Transaction struct {
 //   <gateway-rejection-reason nil="true"></gateway-rejection-reason>
 //   <voice-referral-number nil="true"></voice-referral-number>
 //   <purchase-order-number nil="true"></purchase-order-number>
-//   <tax-amount nil="true"></tax-amount>
-//   <tax-exempt type="boolean">false</tax-exempt>
 //   <status-history type="array">
 //     <status-event>
 //       <timestamp type="datetime">2013-10-07T17:26:14Z</timestamp>
