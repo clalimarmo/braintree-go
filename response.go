@@ -107,10 +107,13 @@ func (r *Response) unpackBody() error {
 func (r *Response) apiError() error {
 	var b BraintreeError
 	xml.Unmarshal(r.Body, &b)
-	if b.ErrorMessage != "" {
+
+	// Some endpoints return StatusNotFound to mean, for example, that a customer was not found.
+	if b.ErrorMessage != "" || r.StatusCode == http.StatusNotFound {
 		b.statusCode = r.StatusCode
 		return &b
 	}
+
 	if r.StatusCode > 299 {
 		return fmt.Errorf("%s (%d)", http.StatusText(r.StatusCode), r.StatusCode)
 	}
