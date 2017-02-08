@@ -39,6 +39,14 @@ type Transaction struct {
 	TaxAmount                  *Decimal                 `xml:"tax-amount,omitempty"`
 	TaxExempt                  bool                     `xml:"tax-exempt,omitempty"`
 	CustomFields               *TransactionCustomFields `xml:"custom-fields,omitempty"`
+
+	AVSErrorResponseCode         string `xml:"avs-error-response-code,omitempty"`
+	AVSPostalCodeResponseCode    string `xml:"avs-postal-code-response-code,omitempty"`
+	AVSStreetAddressResponseCode string `xml:"avs-street-address-response-code,omitempty"`
+
+	CVVResponseCode string `xml:"cvv-response-code,omitempty"`
+
+	GatewayRejectionReason string `xml:"gateway-rejection-reason,omitempty"`
 }
 
 func (transaction *Transaction) CustomFieldsMap() map[string]string {
@@ -82,11 +90,6 @@ func (transaction *Transaction) SetCustomField(name, content string) {
 //
 // <transaction>
 //   <currency-iso-code>USD</currency-iso-code>
-//   <avs-error-response-code nil="true"></avs-error-response-code>
-//   <avs-postal-code-response-code>I</avs-postal-code-response-code>
-//   <avs-street-address-response-code>I</avs-street-address-response-code>
-//   <cvv-response-code>I</cvv-response-code>
-//   <gateway-rejection-reason nil="true"></gateway-rejection-reason>
 //   <voice-referral-number nil="true"></voice-referral-number>
 //   <purchase-order-number nil="true"></purchase-order-number>
 //   <status-history type="array">
