@@ -4,7 +4,7 @@ import (
 	"encoding/xml"
 	"time"
 
-	"github.com/lionelbarrow/braintree-go/nullable"
+	"github.com/clalimarmo/braintree-go/nullable"
 )
 
 type Transaction struct {
