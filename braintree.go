@@ -1,4 +1,4 @@
-package braintree
+package braintree // import "github.com/clalimarmo/braintree-go"
 
 import (
 	"bytes"
